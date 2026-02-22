@@ -3,104 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samara Hero Recreation</title>
+    <title>Samara - Hero Recreation</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        /* Custom thin weight for the XL 10 to match design closely */
-        .font-super-thin {
-            font-weight: 100;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.97); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .animate-fade-in-up {
+            opacity: 0;
+            animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .animate-fade-in {
+            opacity: 0;
+            animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .animate-scale-in {
+            opacity: 0;
+            animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .delay-0 { animation-delay: 0ms; }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+        .delay-500 { animation-delay: 500ms; }
+        .delay-600 { animation-delay: 600ms; }
+
+        .text-balance { text-wrap: balance; }
+        .text-pretty { text-wrap: pretty; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .animate-fade-in-up, .animate-fade-in, .animate-scale-in {
+                animation: none;
+                opacity: 1;
+                transform: none;
+            }
         }
     </style>
 </head>
-<body class="bg-black">
+<body class="bg-black font-sans antialiased selection:bg-[#0088ff] selection:text-white">
 
-    <!-- Navigation Header -->
-    <header class="bg-black text-white w-full px-6 py-5 flex justify-between items-center sticky top-0 z-50">
-        <!-- Logo -->
-        <div class="text-2xl font-normal tracking-wide select-none">
-            Samara
-        </div>
-
-        <!-- Center Nav -->
-        <nav class="hidden lg:flex items-center gap-8 text-sm font-normal text-gray-300">
-            <a href="#" class="hover:text-white transition-colors">Backyard</a>
-            <a href="#" class="hover:text-white transition-colors">Models</a>
-            <a href="#" class="hover:text-white transition-colors">How it works</a>
-            <a href="#" class="hover:text-white transition-colors">Showrooms</a>
-            <div class="flex items-center gap-8">
-                <a href="#" class="hover:text-white transition-colors">Multifamily</a>
+    <!-- Top Navigation & Banner Section -->
+    <div class="relative z-50 bg-black text-white">
+        <!-- Navigation -->
+        <nav class="flex justify-between items-center px-6 md:px-10 py-5 max-w-[1440px] mx-auto animate-fade-in delay-0">
+            <!-- Logo -->
+            <a href="#" class="text-[22px] tracking-tight font-normal">Samara</a>
+            
+            <!-- Center Links -->
+            <div class="hidden lg:flex items-center gap-8 text-[15px] font-normal">
+                <a href="#" class="hover:text-gray-300 transition-colors duration-200">Backyard</a>
+                <a href="#" class="hover:text-gray-300 transition-colors duration-200">Models</a>
+                <a href="#" class="hover:text-gray-300 transition-colors duration-200">How it works</a>
+                <a href="#" class="hover:text-gray-300 transition-colors duration-200">Showrooms</a>
+                <a href="#" class="hover:text-gray-300 transition-colors duration-200">Multifamily</a>
+                
                 <!-- Hamburger Icon -->
-                <button class="flex flex-col gap-[5px] group cursor-pointer">
-                    <span class="w-5 h-[1px] bg-gray-300 group-hover:bg-white transition-colors"></span>
-                    <span class="w-5 h-[1px] bg-gray-300 group-hover:bg-white transition-colors"></span>
+                <button class="w-5 h-2.5 flex flex-col justify-between ml-2 hover:opacity-70 transition-opacity" aria-label="Menu">
+                    <span class="w-full h-[1px] bg-white block"></span>
+                    <span class="w-full h-[1px] bg-white block"></span>
                 </button>
             </div>
+
+            <!-- Right CTA -->
+            <button class="bg-[#0088ff] hover:bg-[#0077e6] text-white px-6 py-2.5 rounded-full text-[15px] font-medium transition-all duration-200 active:scale-97">
+                Design yours
+            </button>
         </nav>
 
-        <!-- CTA Button -->
-        <div>
-            <a href="#" class="bg-[#0091ff] hover:bg-[#007acc] text-white px-5 py-2.5 rounded-full text-sm font-medium transition-colors duration-200">
-                Design yours
-            </a>
+        <!-- Secondary Banner -->
+        <div class="flex flex-col md:flex-row justify-center items-center gap-6 py-12 md:py-20 px-6 text-center">
+            <h2 class="text-[18px] md:text-[20px] font-light tracking-tight animate-fade-in-up delay-100">
+                Support for homeowners in fire-affected Southern California communities
+            </h2>
+            <button class="bg-[#ff4700] hover:bg-[#e64000] text-white px-6 py-2.5 rounded-full text-[15px] font-medium transition-all duration-200 active:scale-97 animate-fade-in-up delay-200 whitespace-nowrap">
+                Find out more
+            </button>
         </div>
-    </header>
-
-    <!-- Notification Banner -->
-    <div class="bg-black text-white w-full py-16 px-4 flex flex-col md:flex-row justify-center items-center gap-6 md:gap-8 text-center">
-        <p class="text-lg md:text-[1.35rem] font-light leading-snug max-w-2xl">
-            Support for homeowners in fire-affected Southern California communities
-        </p>
-        <a href="#" class="bg-[#ff4d00] hover:bg-[#e04400] text-white px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200 whitespace-nowrap">
-            Find out more
-        </a>
     </div>
 
-    <!-- Hero Section -->
-    <main class="relative w-full h-[85vh] min-h-[600px] bg-gray-100 overflow-hidden">
+    <!-- Main Hero Section -->
+    <section class="relative w-full min-h-[700px] h-[80vh] max-h-[1000px] flex items-center overflow-hidden bg-[#f0f0f0]">
         <!-- Background Image -->
-        <!-- Using a placeholder that mimics a landscape (light top for sky, texture bottom for ground) -->
-        <img src="https://placehold.co/1920x1080/f0f2f5/a3a3a3?text=Landscape+Background" 
-             alt="Backyard XL 10 House Landscape" 
-             class="absolute inset-0 w-full h-full object-cover object-center" />
+        <img 
+            src="https://placehold.co/2880x1600/e2e8f0/a0aec0?text=Landscape+Background" 
+            alt="Backyard XL10 Landscape" 
+            class="absolute inset-0 w-full h-full object-cover animate-fade-in delay-0"
+        />
 
-        <!-- Content Overlay -->
-        <div class="relative z-10 w-full h-full container mx-auto px-6 md:px-12 pt-10 md:pt-0">
-            <div class="grid grid-cols-1 md:grid-cols-12 h-full items-start md:items-center content-start md:content-center gap-8 md:gap-0">
-                
-                <!-- Left Text -->
-                <div class="col-span-1 md:col-span-3 flex flex-col justify-center order-2 md:order-1 mt-8 md:mt-0">
-                    <h2 class="text-3xl md:text-4xl lg:text-[2.75rem] leading-[1.1] font-normal text-black tracking-tight">
-                        Small living,<br>supersized.
-                    </h2>
-                </div>
-
-                <!-- Center XL 10 Text -->
-                <div class="col-span-1 md:col-span-6 flex justify-center items-center order-1 md:order-2">
-                    <h1 class="text-[8rem] md:text-[12rem] lg:text-[16rem] xl:text-[19rem] leading-none font-super-thin tracking-tighter text-black select-none mix-blend-darken">
-                        XL10
-                    </h1>
-                </div>
-
-                <!-- Right Description & Button -->
-                <div class="col-span-1 md:col-span-3 flex flex-col justify-center items-start md:pl-8 order-3 md:order-3 pb-12 md:pb-0">
-                    <p class="text-lg md:text-[1.15rem] leading-snug font-light text-black mb-6">
-                        Introducing Backyard XL 10: Two bedrooms, two baths. 950 square feet.
-                    </p>
-                    <a href="#" class="bg-white hover:bg-gray-50 text-black border border-gray-200 px-5 py-2.5 rounded-full text-sm font-medium transition-colors duration-200 inline-flex items-center gap-1 shadow-sm">
-                        Learn more 
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3 h-3 ml-1">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                        </svg>
-                    </a>
-                </div>
-
+        <!-- Content Container -->
+        <div class="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-0 h-full py-20">
+            
+            <!-- Left Text -->
+            <div class="lg:w-1/4 flex justify-start w-full animate-fade-in-up delay-300">
+                <h1 class="text-[32px] md:text-[36px] lg:text-[40px] leading-[1.1] font-light tracking-tight text-black text-balance">
+                    Small living,<br>supersized.
+                </h1>
             </div>
+
+            <!-- Center Massive Graphic -->
+            <div class="lg:w-1/2 flex justify-center items-center animate-fade-in-up delay-400">
+                <span class="text-[120px] sm:text-[160px] md:text-[240px] lg:text-[320px] leading-[0.8] font-thin tracking-tighter text-black select-none">
+                    XL10
+                </span>
+            </div>
+
+            <!-- Right Text & CTA -->
+            <div class="lg:w-1/4 flex flex-col gap-6 items-start w-full animate-fade-in-up delay-500">
+                <p class="text-[18px] lg:text-[20px] leading-[1.4] font-light text-black text-pretty">
+                    Introducing Backyard XL 10:<br>
+                    Two bedrooms, two baths.<br>
+                    950 square feet.
+                </p>
+                <button class="bg-white text-black px-6 py-2.5 rounded-full text-[15px] font-medium inline-flex items-center gap-2 hover:bg-gray-50 transition-all duration-200 border border-gray-200 active:scale-97 animate-fade-in-up delay-600 shadow-sm">
+                    Learn more <span class="text-lg leading-none font-light">&rarr;</span>
+                </button>
+            </div>
+
         </div>
-    </main>
+    </section>
 
 </body>
 </html>
